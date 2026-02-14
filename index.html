@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Cila 💗</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #ffb6c1, #ff69b4, #ff8fd3);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.88);
+      padding: 45px 35px;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+      width: 340px;
+      z-index: 2;
+      animation: pop 1s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      color: #ff1493;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #ff4da6;
+      font-size: 16px;
+      margin-bottom: 22px;
+    }
+
+    .name {
+      font-weight: bold;
+      color: #ff1493;
+    }
+
+    button {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 18px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 8px;
+      transition: 0.2s;
+      font-weight: bold;
+    }
+
+    #yesBtn {
+      background: #ff1493;
+      color: white;
+      box-shadow: 0 8px 20px rgba(255, 20, 147, 0.4);
+    }
+
+    #yesBtn:hover {
+      background: #ff4da6;
+      transform: scale(1.08);
+    }
+
+    #noBtn {
+      background: #ffd1dc;
+      color: #ff1493;
+      box-shadow: 0 8px 20px rgba(255, 20, 147, 0.2);
+    }
+
+    #noBtn:hover {
+      transform: scale(1.05);
+    }
+
+    #message {
+      margin-top: 18px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff1493;
+      display: none;
+      animation: fade 1s ease;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff1493;
+      transform: rotate(45deg);
+      animation: float 5s infinite ease-in;
+      opacity: 0.75;
+      z-index: 1;
+    }
+
+    .heart:before,
+    .heart:after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff1493;
+      border-radius: 50%;
+    }
+
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart:after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+      40% {
+        opacity: 0.85;
+      }
+      100% {
+        transform: translateY(-20vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .footer {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #ff69b4;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>💗 Hi <span class="name">Cila</span> 💗</h1>
+    <p>
+      Dari <span class="name">Cole</span> untuk <span class="name">Cila</span> 😭💞  
+      <br><br>
+      Kamu bikin hari-hari aku jadi lebih indah...
+      <br>
+      jadi aku cuma mau tanya satu hal 🥺
+    </p>
+
+    <h1>Will you be my girlfriend? 💕</h1>
+
+    <button id="yesBtn">YES 💗</button>
+    <button id="noBtn">NO 😭</button>
+
+    <div id="message">YAYYY CILA SAID YES!! 😭💗💗💗 <br> I LOVE YOU SO MUCH 💞</div>
+    <div class="footer">Made with love by Cole 💗</div>
+  </div>
+
+  <script>
+    // floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      heart.style.opacity = Math.random();
+      heart.style.transform = "scale(" + (Math.random() + 0.5) + ") rotate(45deg)";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+    setInterval(createHeart, 250);
+
+    // buttons
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const message = document.getElementById("message");
+
+    yesBtn.addEventListener("click", () => {
+      message.style.display = "block";
+      noBtn.style.display = "none";
+      yesBtn.innerText = "I'M YOUR BF NOW 😭💗";
+    });
+
+    // NO button runs away
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.position = "absolute";
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+  </script>
+
+</body>
+</html>
